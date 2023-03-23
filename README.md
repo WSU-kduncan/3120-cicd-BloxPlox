@@ -1,2 +1,7 @@
-# 3120-cicd-BloxPlox
-# 3120-cicd-BloxPlox
+# Project 4 - James Nagy
+
+## Part 1: Dockerize it
+
+## Part 2: GitHub Actions and DockerHub
+
+## Diagramming
