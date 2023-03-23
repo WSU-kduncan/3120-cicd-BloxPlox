@@ -100,7 +100,6 @@
 </svg>
 
 <main>
-  <h1 class="visually-hidden">Headers examples</h1>
 
   <div class="container">
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
@@ -110,18 +109,28 @@
       </a>
 
       <ul class="nav nav-pills">
-        <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
-        <li class="nav-item"><a href="email.html" class="nav-link">Email</a></li>
+        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Email</a></li>
       </ul>
     </header>
   </div>
 
   <div class="b-example-divider"></div>
-  <div class="col-lg-8 mx-auto p-4 py-md-5">
-  <h1>Welcome to Easy-Pretty with Bootstrap!</h1>
-    <p class="fs-5 col-md-8">Replace this class here with your own blurb.  I just wanted something pretty</p>
 
-   </div>
+  <div class="container">
+  <form>
+    <h1 class="h3 mb-3 fw-normal">Enter your message here</h1>
+    <div class="form-floating">
+      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <label for="floatingInput">Email address</label>
+    </div>
+    <div class="form-floating">
+      <input type="text" class="form-control" id="floatingMessage" placeholder="Message Text">
+      <label for="floatingMessage">Message</label>
+    </div>
+  </form>
+  </div>
+
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
 </main>      
