@@ -4,4 +4,4 @@
 
 ## Part 2: GitHub Actions and DockerHub
 
-## Diagramming
+## Part 3: Diagramming
