@@ -41,6 +41,10 @@ CONTAINER ID   IMAGE               COMMAND                  CREATED         STAT
 010b780fe75c   website_image:1.0   "/usr/sbin/apache2 -…"   7 minutes ago   Up 7 minutes   0.0.0.0:80->80/tcp   mywebsite
 ```
 
+  * To view the website running on the container we created, simply go to your browser of choice and enter the following in the URL menu: `localhost:80`, `localhost`, `127.0.0.1`, or `127.0.0.1:80`. Any of these should work. Now, you can view the fruits of your labor in your browser!
+
+![image](website.png)
+
 ## Part 2: GitHub Actions and DockerHub
 
 ## Part 3: Diagramming
