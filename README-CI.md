@@ -85,3 +85,5 @@ CONTAINER ID   IMAGE               COMMAND                  CREATED         STAT
    
 
 ## Part 3: Diagramming
+
+![image](project4-ci.png)
