@@ -57,6 +57,31 @@ CONTAINER ID   IMAGE               COMMAND                  CREATED         STAT
   * In order to push container images, we need to first tag the image using the command, `docker image tag imageName dockerhubUsername/imageName:latest`. Now we can push the image to DockerHub using the command, `docker image push dockerhubUsername/imageName:latest`
 
 * Configuring GitHub Secrets:
-  *
+  * To set a secret on GitHub, you'll want to head to the Settings tab in your repo. On the left side of your screen, you should see a menu with `General`, `Access`, `Code and automation`, and `Security`. Look under Security and you should see an option called, `Secrets and Variables`. Click this dropdown and select `Actions`. Once we're in `Action secrets and variables`, we'll want to select `New repository secret`. (The big, green button!) 
+
+![image](secret-1.png)
+
+  Once we're in the `New secret` menu, we can add a new secret. This can be a username, password, or an access token. Give your secret a name using all caps and underscores for spaces. Then, place your secret in the `Secret` field. Make sure the spelling of your secret is correct and once you're finished, click the `Add secret` button and you're done!
+
+![image](secret-2.png)
+
+  * There are two secrets set for this project. We created a secret for our DockerHub username and password (or a token, which is a better option than using a password). I used my DockerHub username and an access token for my project. 
+
+* Behavior of GitHub workflow
+  * A workflow is an automated, customizable process that can run one or more jobs. Workflows are established with a YAML file that is checked into your repository. These workflows can be run when triggered by an event in your repository, manually, or on a schedule. 
+
+  * In this project, my workflow is triggered whenever I push onto my main branch. Two custom variables that this project uses is `${{ secrets.DOCKER_USERNAME }}` and `${{ secrets.DOCKER_PASSWORD }}`. These two variables reference the secrets we created earlier and are used to login to our DockerHub account. This last feature allows us to push images to our DockerHub account. In my YAML file for the workflow, I have the following code:
+
+```yaml
+- name: Build and push Docker image
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          push: true
+          tags: nagyjames/project4:latest
+```
+
+  The `tags:` option gives our Docker image that we've pushed a tag called `latest`. This will apply to all image versions that we push.
+
+   
 
 ## Part 3: Diagramming
