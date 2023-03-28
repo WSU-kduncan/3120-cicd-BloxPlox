@@ -43,7 +43,7 @@ CONTAINER ID   IMAGE               COMMAND                  CREATED         STAT
 
   * To view the website running on the container we created, simply go to your browser of choice and enter the following in the URL menu: `localhost:80`, `localhost`, `127.0.0.1`, or `127.0.0.1:80`. Any of these should work. Now, you can view the fruits of your labor in your browser!
 
-![image](website/website.png)
+![image](images/website.png)
 
 ## Part 2: GitHub Actions and DockerHub
 
