@@ -47,4 +47,6 @@ CONTAINER ID   IMAGE               COMMAND                  CREATED         STAT
 
 ## Part 2: GitHub Actions and DockerHub
 
+### Process to create public repository in DockerHub
+
 ## Part 3: Diagramming
