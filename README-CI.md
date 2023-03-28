@@ -59,11 +59,11 @@ CONTAINER ID   IMAGE               COMMAND                  CREATED         STAT
 * Configuring GitHub Secrets:
   * To set a secret on GitHub, you'll want to head to the Settings tab in your repo. On the left side of your screen, you should see a menu with `General`, `Access`, `Code and automation`, and `Security`. Look under Security and you should see an option called, `Secrets and Variables`. Click this dropdown and select `Actions`. Once we're in `Action secrets and variables`, we'll want to select `New repository secret`. (The big, green button!) 
 
-![image](secret-1.png)
+![image](images/secret-1.png)
 
   Once we're in the `New secret` menu, we can add a new secret. This can be a username, password, or an access token. Give your secret a name using all caps and underscores for spaces. Then, place your secret in the `Secret` field. Make sure the spelling of your secret is correct and once you're finished, click the `Add secret` button and you're done!
 
-![image](secret-2.png)
+![image](images/secret-2.png)
 
   * There are two secrets set for this project. We created a secret for our DockerHub username and password (or a token, which is a better option than using a password). I used my DockerHub username and an access token for my project. 
 
@@ -86,4 +86,4 @@ CONTAINER ID   IMAGE               COMMAND                  CREATED         STAT
 
 ## Part 3: Diagramming
 
-![image](project4-ci.png)
+![image](images/project4-ci.png)
