@@ -47,7 +47,16 @@ CONTAINER ID   IMAGE               COMMAND                  CREATED         STAT
 
 ## Part 2: GitHub Actions and DockerHub
 
-### Process to create public repository in DockerHub
-* test
+* Process to create public repository in DockerHub:
+  * Creating a public repo in DockerHub is fairly simple. But it does involve a few steps. Once you've created an account on DockerHub, head over to the tab called "Repositories". Then, look for the big blue button which says, "Create Repository", then click it. FIll the repository name field with an easy to remember name for your repo and a description if you wish. Once you're done, click on "Create". Yeah, that it, you've made a repo!
+
+* How to authenticate with DockerHub via CLI using Dockerhub credentials:
+  * This is done using the command, `docker login --username demo --password example`. Where `demo` is your DockerHub username and `example` is your password. However, I do recommend using an access token instead of your password, for security reasons.
+
+* How to push container image to Dockerhub (without GitHub Actions):
+  * In order to push container images, we need to first tag the image using the command, `docker image tag imageName dockerhubUsername/imageName:latest`. Now we can push the image to DockerHub using the command, `docker image push dockerhubUsername/imageName:latest`
+
+* Configuring GitHub Secrets:
+  *
 
 ## Part 3: Diagramming
