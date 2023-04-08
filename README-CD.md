@@ -62,3 +62,6 @@ on:
 
 
 ## Part 2 - Deployment
+
+### How to install Docker to your instance
+
