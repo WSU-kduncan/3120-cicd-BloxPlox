@@ -10,4 +10,46 @@
 
 * Generating a `tag` in GitHub is done with the command `git tag -a v1.2.0`. The tag v1.2.0 represents the version number. With the 1 representing a MAJOR version, the 2 a MINOR version, and the 0 a PATCH version. A MAJOR version change (from 1.0.0 to 2.0.0 for example) is when you make conflicting API modifications. A MINOR version change (1.1.0 to 1.2.0) is when you include some functionality in a backwards compatible way. And finally, a PATCH version change (1.0.0 to 1.0.1) is usually a small bug fix. Overall, this will generate a tag in GitHub, but it won't trigger an Action nor will it add a version to our Dockerhub image. 
 
-* To do this, we need to make some changes to our workflow.yml file. 
+* To do this, we need to make some changes to our workflow.yml file. The first change we need to make is to have an Action trigger when we push a new tag.
+
+```yml
+on:
+  push:
+    branches:
+      - "main"
+    tags:
+      - "v*.*.*"
+```
+  
+  Not only do we want our Action to trigger when there's a push to main, but also when a new tag is pushed. So, we add `tag:` followed by the type of tag we want it to look for. In our case, we'll be using semantic versioning. It will look for a tag with the format "v(Major number).(Minor number).(Patch number)".
+
+* Next, we need to collect `tag` data for DockerHub. 
+
+```yml
+- name: Collecting tag data
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          # Docker image to use as a base name for our tags
+          images: |
+            nagyjames/project4
+          # this will generate our Docker tags based on these attributes
+          tags: |
+            type=semver,pattern={{major}}
+            type=semver,pattern={{major}}.{{minor}}
+```
+
+  This will generate a set of tags from our repository. 
+
+```yml
+- name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+            # tags: nagyjames/project4:latest
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }} 
+```
+
+  And finally, this will build and push our Docker image with our new tag that we've created using the set of tags generated with `docker/metadata-action`. 
