@@ -10,6 +10,8 @@
 
 * Generating a `tag` in GitHub is done with the command `git tag -a v1.2.0`. The tag v1.2.0 represents the version number. With the 1 representing a MAJOR version, the 2 a MINOR version, and the 0 a PATCH version. A MAJOR version change (from 1.0.0 to 2.0.0 for example) is when you make conflicting API modifications. A MINOR version change (1.1.0 to 1.2.0) is when you include some functionality in a backwards compatible way. And finally, a PATCH version change (1.0.0 to 1.0.1) is usually a small bug fix. Overall, this will generate a tag in GitHub, but it won't trigger an Action nor will it add a version to our Dockerhub image. 
 
+### Behavior of GitHub workflow
+
 * To do this, we need to make some changes to our workflow.yml file. The first change we need to make is to have an Action trigger when we push a new tag.
 
 ```yml
@@ -52,4 +54,11 @@ on:
           labels: ${{ steps.meta.outputs.labels }} 
 ```
 
-  And finally, this will build and push our Docker image with our new tag that we've created using the set of tags generated with `docker/metadata-action`. 
+  And finally, this will build and push our Docker image with our new tag that we've created using the set of tags generated with `docker/metadata-action`.
+
+### Link to DockerHub repository (as additional proof)
+[dockerhub repo](https://hub.docker.com/repository/docker/nagyjames/project4/general)
+
+
+
+## Part 2 - Deployment
