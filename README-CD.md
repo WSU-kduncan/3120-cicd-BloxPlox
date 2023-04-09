@@ -129,4 +129,22 @@ This webhook task definition file should be in the `/etc/webhook.conf` directory
 
 ### How to configure GitHub OR DockerHub to message the listener
 
- 
+The first thing you'll want to do is head over to your Github repo. Under the Settings tab, click on the left where it says `Webhooks`. Under this menu, you'll want to click where it says `Add webhook` to get started. 
+
+![image](images/image1.png)
+
+You should see a new menu now, look where it says `Payload URL`. This is where we want to add our URL with the format "http://[Public_IP]:9000/hooks/[hook_name]"
+
+![image](images/image2.png)
+
+Scroll down a bit and you should see where it says "Which events would you like to trigger this webhook?" Click where it says "Let me select individual events."
+
+![image](images/image3.png)
+
+Find where it says "Pushes" and check that box.
+
+![image](images/image4.png)
+
+Now, scroll down all the way and check the box where it says "Workflow runs". Finally, click `Update webhook` and you're done!
+
+![image](images/image5.png) 
