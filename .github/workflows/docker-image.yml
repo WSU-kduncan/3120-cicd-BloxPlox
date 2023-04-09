@@ -51,3 +51,11 @@ jobs:
             # tags: nagyjames/project4:latest
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+  discord-hook:
+    needs: push_to_registry
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send message to webhook on Discord
+        uses: johnnyhuy/actions-discord-git-webhook@main
+        with: webhook_url: ${{ secrets.DISCORD_URL }}
