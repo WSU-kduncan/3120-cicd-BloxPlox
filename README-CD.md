@@ -71,4 +71,62 @@ Installing Docker on your instance is as easy as CRTL-C, CRTL-V.
 * Now, install all of the dependency packages `sudo snap install docker`
 * Finally, check your version and you're good to go `docker --version`
 
+### Container restart script
 
+The container restart gives us an easy way to manipulate our docker images and can save us a lot of time. Instead of typing out each docker command when we want to stop, pull, or run an image, we can use this script to do that for us. This script will stop a specified docker image if it's running, remove it, pull the latest image from DockerHub, and finally run the new image. 
+
+Currently on my instance, the `restart.sh` script is just sitting in my home directory. Not the best place to have an executable file. If someone were to use my instance, by default, the script should be placed in `/usr/local/bin`.
+
+### Setting up a `webhook` on the instance
+
+We will be installing [adnanh's webhook](https://github.com/adnanh/webhook) on our instance. To do this, use the command `sudo apt-get install webhook`. 
+
+To start the webhook, use the command `webhook -hooks /etc/webhook.conf -verbose`. Since our instance will auto-shutdown every 4 hours, we need a way for the webhook to automatically restart when the instance boots up.
+
+To do this, we need to head over to the `/etc/systemd/system` directory and create a file called `webhook.service`. In this file, we need to add the following content:
+
+```service
+[Unit]
+Description="this is a service for the pizza webhook"
+
+[Service]
+ExecStart=/usr/bin/webhook -hooks /etc/webhook.conf -hotreload
+
+[Install]
+WantedBy=multi-user.target
+```
+
+To test and see if this works, run the command `sudo reboot`. Then once it's back up, run the command `sudo service webhook status` to see if our webhook is running. You should see output like the following:
+
+```
+ubuntu@ip-10-0-0-25:/etc/systemd/system$ sudo service webhook status
+● webhook.service - "this is a service for the pizza webhook"
+   Loaded: loaded (/etc/systemd/system/webhook.service; enabled; vendo
+   Active: active (running) since Sun 2023-04-09 19:35:40 UTC; 2h 43mi
+ Main PID: 833 (webhook)
+    Tasks: 7 (limit: 1134)
+   CGroup: /system.slice/webhook.service
+           └─833 /usr/bin/webhook -hooks /etc/webhook.conf -hotreload
+```
+
+### `webhook` task definition file
+
+The webhook task definition file allows us to define hooks we want our webhook to serve. The file in question:
+
+```conf
+[
+  {
+    "id": "pizza",
+    "execute-command": "/home/ubuntu/restart.sh",
+    "command-working-directory": "/var/webhook"
+  }
+]
+```
+
+This file defines a hook named `pizza` that will run a restart script which is located in `/home/ubuntu/restart.sh`. (Remember what I said earlier, this executable shouldn't be there...).
+
+This webhook task definition file should be in the `/etc/webhook.conf` directory. 
+
+### How to configure GitHub OR DockerHub to message the listener
+
+ 
