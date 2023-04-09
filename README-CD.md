@@ -65,3 +65,10 @@ on:
 
 ### How to install Docker to your instance
 
+Installing Docker on your instance is as easy as CRTL-C, CRTL-V.
+* First, make sure your system is up to date by running the command `sudo apt-get update`.
+* Next, install Docker with this command `sudo apt install docker.io`.
+* Now, install all of the dependency packages `sudo snap install docker`
+* Finally, check your version and you're good to go `docker --version`
+
+
