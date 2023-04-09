@@ -2,7 +2,8 @@ FROM ubuntu
  
 RUN apt update 
 RUN apt install -y apache2 
-RUN apt install -y apache2-utils 
+RUN apt install -y apache2-utils
+RUN apk add git
 RUN apt clean
 
 ENV APACHE_RUN_USER www-data
