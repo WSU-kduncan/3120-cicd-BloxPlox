@@ -159,7 +159,7 @@ Now, scroll down all the way and check the box where it says "Workflow runs". Fi
 
 ### RECORD your whole workflow process - from `commit` and `push` to your instance getting a fresh image
 
-(https://youtu.be/RioTDPDQaFU)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/RioTDPDQaFU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Part 3 - Diagramming
 ![image](diagram.png)
