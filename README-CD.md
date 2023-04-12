@@ -4,7 +4,7 @@
 
 ### CD Project Overview
 
-The goal of this project is to add semantic versioning to our images using `git tag` metadata in GitHub's Actions. This will be done by editing our workflow.yml file to trigger an action when a tag is pushed.We'll also be pushing our tags to DockerHub using `docker/metadata-action` in our workflow.yml file.  The second goal is to keep production up to date using webhooks. This will be done via an EC2 instance using our DockerHub image, a script to pull new images, and a webhook. 
+The goal of this project is to add semantic versioning to our images using `git tag` metadata in GitHub's Actions. This will be done by editing our workflow.yml file to trigger an action when a tag is pushed. We'll also be pushing our tags to DockerHub using `docker/metadata-action` in our workflow.yml file.  The second goal is to keep production up to date using webhooks. This will be done via an EC2 instance using our DockerHub image, a script to pull new images, and a webhook. 
 
 
 ### How to generate a `tag` in `git` / GitHub
@@ -162,4 +162,4 @@ Now, scroll down all the way and check the box where it says "Workflow runs". Fi
 [![Workflow Process](https://img.youtube.com/vi/RioTDPDQaFU/0.jpg)](https://youtu.be/RioTDPDQaFU "Workflow Process")
 
 ## Part 3 - Diagramming
-![image](diagram.png)
+![image](images/diagram.png)
